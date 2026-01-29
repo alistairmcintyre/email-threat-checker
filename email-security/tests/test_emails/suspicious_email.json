@@ -1,0 +1,8 @@
+{
+  "from": "newsletter@marketing-deals.top",
+  "to": ["user@company.com"],
+  "subject": "Exclusive offer just for you!",
+  "body": "Congratulations!\n\nYou've been selected for an exclusive offer. Click below to claim your reward:\n\nhttps://bit.ly/special-offer-2024\n\nThis offer expires in 24 hours!\n\nDon't miss out on this limited time opportunity.\n\nBest,\nMarketing Team",
+  "headers": {},
+  "attachments": []
+}

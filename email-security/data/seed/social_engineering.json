@@ -1,0 +1,140 @@
+[
+  {
+    "id": "se-001",
+    "threat_type": "business_email_compromise",
+    "pattern": "CEO fraud - urgent wire transfer request",
+    "description": "Email impersonating CEO/executive requesting urgent wire transfer or gift card purchase",
+    "severity": 0.95,
+    "indicators": [
+      "Claims to be from CEO/executive",
+      "Requests wire transfer or gift cards",
+      "Emphasizes urgency and secrecy",
+      "Unusual email address for executive",
+      "Asks to bypass normal procedures"
+    ],
+    "examples": [
+      "I need you to process an urgent wire transfer. Keep this confidential.",
+      "Can you purchase some gift cards for a client? I'll reimburse you.",
+      "I'm in a meeting but need you to handle this payment immediately."
+    ]
+  },
+  {
+    "id": "se-002",
+    "threat_type": "business_email_compromise",
+    "pattern": "Vendor impersonation - payment redirect",
+    "description": "Email claiming to be from vendor requesting payment to new bank account",
+    "severity": 0.9,
+    "indicators": [
+      "Claims banking details have changed",
+      "Requests payment to new account",
+      "Mimics known vendor",
+      "Urgency around upcoming payment"
+    ],
+    "examples": [
+      "Please update our banking details for future payments.",
+      "Our account has changed. Send the pending invoice payment to this new account."
+    ]
+  },
+  {
+    "id": "se-003",
+    "threat_type": "social_engineering",
+    "pattern": "Authority impersonation - IT department",
+    "description": "Email claiming to be from IT requiring password or credential verification",
+    "severity": 0.8,
+    "indicators": [
+      "Claims to be from IT/helpdesk",
+      "Requests password or credentials",
+      "Threatens system access removal",
+      "Link to verify credentials"
+    ],
+    "examples": [
+      "IT Department: Your password expires today. Click here to update.",
+      "Helpdesk: We need to verify your account. Please confirm your password."
+    ]
+  },
+  {
+    "id": "se-004",
+    "threat_type": "social_engineering",
+    "pattern": "Authority impersonation - HR department",
+    "description": "Email claiming to be from HR requesting personal information or document review",
+    "severity": 0.75,
+    "indicators": [
+      "Claims to be from HR",
+      "Requests personal information",
+      "Mentions benefits, payroll, or policy",
+      "Attachment or link to document"
+    ],
+    "examples": [
+      "HR: Please review and sign the updated employee handbook.",
+      "Payroll: Verify your bank details for next month's salary deposit."
+    ]
+  },
+  {
+    "id": "se-005",
+    "threat_type": "social_engineering",
+    "pattern": "Pretexting - job offer scam",
+    "description": "Fake job offer requesting personal information or upfront payment",
+    "severity": 0.7,
+    "indicators": [
+      "Unsolicited job offer",
+      "High salary for simple work",
+      "Requests personal documents",
+      "Asks for upfront payment for equipment"
+    ],
+    "examples": [
+      "You've been selected for a remote position. Send your details to proceed.",
+      "Job offer: $5000/week working from home. Send SSN and bank details."
+    ]
+  },
+  {
+    "id": "se-006",
+    "threat_type": "social_engineering",
+    "pattern": "Quid pro quo - tech support",
+    "description": "Unsolicited tech support offering to fix non-existent problems",
+    "severity": 0.7,
+    "indicators": [
+      "Unsolicited tech support offer",
+      "Claims computer has problems",
+      "Requests remote access",
+      "Asks for payment for services"
+    ],
+    "examples": [
+      "We detected issues with your computer. Let us connect remotely to fix it.",
+      "Your software license is invalid. Call us to resolve."
+    ]
+  },
+  {
+    "id": "se-007",
+    "threat_type": "social_engineering",
+    "pattern": "Scarcity and urgency tactics",
+    "description": "Email using artificial time pressure to force quick decisions",
+    "severity": 0.65,
+    "indicators": [
+      "Limited time offer",
+      "Act now or lose opportunity",
+      "Countdown or deadline",
+      "One-time opportunity"
+    ],
+    "examples": [
+      "This offer expires in 2 hours. Act now!",
+      "Only 3 spots remaining. Register immediately."
+    ]
+  },
+  {
+    "id": "se-008",
+    "threat_type": "social_engineering",
+    "pattern": "Fear and intimidation tactics",
+    "description": "Email using threats or fear to compel action",
+    "severity": 0.8,
+    "indicators": [
+      "Threatens legal action",
+      "Claims you owe money",
+      "Threatens account closure",
+      "Claims evidence of wrongdoing"
+    ],
+    "examples": [
+      "Legal notice: Pay immediately or face prosecution.",
+      "We have evidence of your activities. Pay to prevent exposure."
+    ]
+  }
+]

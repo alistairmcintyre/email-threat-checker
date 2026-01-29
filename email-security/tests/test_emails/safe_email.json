@@ -1,0 +1,10 @@
+{
+  "from": "colleague@company.com",
+  "to": ["you@company.com"],
+  "subject": "Meeting notes from today",
+  "body": "Hi,\n\nHere are the notes from our meeting today.\n\nKey points discussed:\n- Q4 planning timeline\n- Budget allocation\n- Team assignments\n\nLet me know if you have any questions.\n\nBest,\nJohn",
+  "headers": {
+    "Authentication-Results": "spf=pass; dkim=pass; dmarc=pass"
+  },
+  "attachments": []
+}

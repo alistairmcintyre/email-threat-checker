@@ -1,0 +1,10 @@
+{
+  "from": "ceo@company-corp.com",
+  "to": ["finance@company.com"],
+  "subject": "Urgent - Wire Transfer Needed",
+  "body": "Hi,\n\nI'm in an important meeting and need you to process an urgent wire transfer.\n\nPlease send $45,000 to the following account:\nBank: First National\nAccount: 1234567890\nRouting: 021000021\n\nThis is time-sensitive and confidential. Don't discuss with anyone else.\n\nI'll explain when I'm out of the meeting.\n\nThanks,\nJohn Smith\nCEO",
+  "headers": {
+    "Reply-To": "ceo.smith@gmail.com"
+  },
+  "attachments": []
+}

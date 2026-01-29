@@ -1,0 +1,105 @@
+[
+  {
+    "id": "domain-001",
+    "threat_type": "spoofing",
+    "pattern": "Typosquatting of PayPal domain",
+    "description": "Domains that mimic PayPal through typos, character substitution, or similar-looking characters",
+    "severity": 0.9,
+    "indicators": [
+      "paypa1.com (letter l replaced with 1)",
+      "paypai.com (letter l replaced with i)",
+      "paypal-secure.com (added hyphen and word)",
+      "paypall.com (double letter)"
+    ],
+    "examples": [
+      "Email from support@paypa1.com claiming account issue",
+      "Email from noreply@paypal-secure.xyz with login link"
+    ]
+  },
+  {
+    "id": "domain-002",
+    "threat_type": "spoofing",
+    "pattern": "Typosquatting of Amazon domain",
+    "description": "Domains that mimic Amazon through typos or character substitution",
+    "severity": 0.9,
+    "indicators": [
+      "amaz0n.com (letter o replaced with 0)",
+      "arnazon.com (letter m replaced with rn)",
+      "amazon-orders.com (added hyphen and word)",
+      "amazom.com (typo)"
+    ],
+    "examples": [
+      "Order confirmation from orders@amaz0n-shipping.com",
+      "Account alert from security@arnazon.com"
+    ]
+  },
+  {
+    "id": "domain-003",
+    "threat_type": "spoofing",
+    "pattern": "Typosquatting of Microsoft domain",
+    "description": "Domains that mimic Microsoft through typos or character substitution",
+    "severity": 0.9,
+    "indicators": [
+      "micros0ft.com (letter o replaced with 0)",
+      "mircosoft.com (letters transposed)",
+      "microsoft-support.com (added hyphen and word)",
+      "rnicrosoft.com (letter m replaced with rn)"
+    ],
+    "examples": [
+      "Office 365 alert from admin@micros0ft-365.com",
+      "Password reset from security@mircosoft.net"
+    ]
+  },
+  {
+    "id": "domain-004",
+    "threat_type": "spoofing",
+    "pattern": "Typosquatting of Google domain",
+    "description": "Domains that mimic Google through typos or character substitution",
+    "severity": 0.9,
+    "indicators": [
+      "g00gle.com (letters o replaced with 0)",
+      "gooogle.com (extra o)",
+      "google-verify.com (added hyphen and word)",
+      "googie.com (letter l replaced with i)"
+    ],
+    "examples": [
+      "Security alert from no-reply@g00gle-security.com",
+      "Gmail storage warning from alerts@gooogle.net"
+    ]
+  },
+  {
+    "id": "domain-005",
+    "threat_type": "phishing",
+    "pattern": "Free email provider with brand name",
+    "description": "Gmail/Yahoo/etc accounts pretending to be official brand support",
+    "severity": 0.7,
+    "indicators": [
+      "paypal.support@gmail.com",
+      "amazon.customer.service@yahoo.com",
+      "microsoft.help@outlook.com",
+      "Official-looking name with free email"
+    ],
+    "examples": [
+      "Email from amazon.orders@gmail.com about order issue",
+      "Email from appleid.support@yahoo.com about account"
+    ]
+  },
+  {
+    "id": "domain-006",
+    "threat_type": "phishing",
+    "pattern": "High-risk TLD usage",
+    "description": "Legitimate-looking domains using high-risk top-level domains",
+    "severity": 0.6,
+    "indicators": [
+      ".xyz domains",
+      ".top domains",
+      ".click domains",
+      ".loan domains",
+      ".work domains"
+    ],
+    "examples": [
+      "Email from support@amazon-verify.xyz",
+      "Email from security@paypal-alert.top"
+    ]
+  }
+]

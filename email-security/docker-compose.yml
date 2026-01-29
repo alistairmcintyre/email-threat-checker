@@ -1,0 +1,103 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: email-security-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # Uncomment below for GPU acceleration (requires nvidia-docker)
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+  ollama-pull:
+    image: curlimages/curl:latest
+    container_name: email-security-ollama-pull
+    depends_on:
+      - ollama
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        echo "Waiting for Ollama to be ready..."
+        until curl -s http://ollama:11434/api/tags > /dev/null 2>&1; do
+          echo "  Ollama not ready, waiting..."
+          sleep 2
+        done
+        echo "Ollama is ready! Pulling LLM model..."
+        curl -X POST http://ollama:11434/api/pull -d '{"name": "llama3.2:3b"}' --no-buffer
+        echo "Pulling embedding model..."
+        curl -X POST http://ollama:11434/api/pull -d '{"name": "nomic-embed-text"}' --no-buffer
+        echo "Models pulled successfully!"
+    restart: "no"
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: email-security-qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    environment:
+      - QDRANT__SERVICE__GRPC_PORT=6334
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O - http://localhost:6333/collections || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: email-security-api
+    ports:
+      - "8000:8000"
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - QDRANT_HOST=qdrant
+      - QDRANT_PORT=6333
+      - LLM_MODEL=llama3.2:3b
+      - EMBEDDING_MODEL=nomic-embed-text
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - ollama
+      - qdrant
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import httpx; httpx.get('http://localhost:8000/health').raise_for_status()\""]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+
+  seed:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: email-security-seed
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - QDRANT_HOST=qdrant
+      - QDRANT_PORT=6333
+      - EMBEDDING_MODEL=nomic-embed-text
+    volumes:
+      - ./data:/app/data
+      - ./scripts:/app/scripts
+    depends_on:
+      - api
+    entrypoint: ["python", "/app/scripts/seed_qdrant.py"]
+    restart: "no"
+
+volumes:
+  ollama_data:
+  qdrant_data:

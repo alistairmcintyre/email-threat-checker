@@ -1,0 +1,138 @@
+[
+  {
+    "id": "phish-001",
+    "threat_type": "phishing",
+    "pattern": "Account verification request with urgent deadline",
+    "description": "Email claims account will be suspended unless user verifies credentials immediately via provided link",
+    "severity": 0.85,
+    "indicators": [
+      "Urgency language (immediate, within 24 hours)",
+      "Threatens account suspension",
+      "Contains verify/confirm link",
+      "Generic greeting (Dear Customer)"
+    ],
+    "examples": [
+      "Your account will be suspended in 24 hours. Click here to verify.",
+      "Immediate action required: Confirm your identity to avoid account termination"
+    ]
+  },
+  {
+    "id": "phish-002",
+    "threat_type": "phishing",
+    "pattern": "Password reset notification not requested by user",
+    "description": "Fake password reset email attempting to harvest credentials through malicious link",
+    "severity": 0.8,
+    "indicators": [
+      "Password reset you didn't request",
+      "Link to reset password",
+      "Urgency to act if you didn't request",
+      "Sender mimics legitimate service"
+    ],
+    "examples": [
+      "We received a request to reset your password. If this wasn't you, click here immediately.",
+      "Your password was changed. Click here to secure your account if this wasn't you."
+    ]
+  },
+  {
+    "id": "phish-003",
+    "threat_type": "phishing",
+    "pattern": "Invoice or payment notification with attachment or link",
+    "description": "Fake invoice claiming payment is due, directing to credential harvesting page",
+    "severity": 0.75,
+    "indicators": [
+      "Unexpected invoice",
+      "Payment due urgently",
+      "Link to view invoice details",
+      "Attachment with invoice"
+    ],
+    "examples": [
+      "Invoice #12345 is overdue. Pay now to avoid service interruption.",
+      "Your payment of $500 is pending. View invoice details here."
+    ]
+  },
+  {
+    "id": "phish-004",
+    "threat_type": "phishing",
+    "pattern": "Delivery notification for package you didn't order",
+    "description": "Fake shipping notification attempting to steal credentials or install malware",
+    "severity": 0.7,
+    "indicators": [
+      "Package delivery notification",
+      "Tracking link provided",
+      "Request for delivery fee",
+      "Unexpected sender"
+    ],
+    "examples": [
+      "Your package could not be delivered. Click here to reschedule.",
+      "Pay $1.99 delivery fee to receive your package."
+    ]
+  },
+  {
+    "id": "phish-005",
+    "threat_type": "phishing",
+    "pattern": "Tech support scam claiming device is infected",
+    "description": "Email claims computer is infected and directs to fake tech support",
+    "severity": 0.8,
+    "indicators": [
+      "Claims device is infected",
+      "Provides phone number to call",
+      "Urgent action required",
+      "Threatens data loss"
+    ],
+    "examples": [
+      "Warning: Your computer has been infected with malware. Call immediately.",
+      "Microsoft Security Alert: Virus detected. Contact support now."
+    ]
+  },
+  {
+    "id": "phish-006",
+    "threat_type": "phishing",
+    "pattern": "Bank account security alert",
+    "description": "Fake bank notification about suspicious activity requiring verification",
+    "severity": 0.9,
+    "indicators": [
+      "Claims suspicious activity",
+      "Asks to verify identity",
+      "Link to secure banking portal",
+      "Mimics bank branding"
+    ],
+    "examples": [
+      "Unusual activity detected on your account. Verify your identity immediately.",
+      "Your account has been limited. Log in to restore full access."
+    ]
+  },
+  {
+    "id": "phish-007",
+    "threat_type": "phishing",
+    "pattern": "Prize or lottery winning notification",
+    "description": "Claims recipient has won prize and needs to provide personal information to claim",
+    "severity": 0.85,
+    "indicators": [
+      "Claims you've won something",
+      "Requests personal information",
+      "Processing fee required",
+      "Time-limited offer"
+    ],
+    "examples": [
+      "Congratulations! You've won $1,000,000. Reply with your details to claim.",
+      "You've been selected for our exclusive prize draw. Claim your reward now."
+    ]
+  },
+  {
+    "id": "phish-008",
+    "threat_type": "phishing",
+    "pattern": "Social media account alert",
+    "description": "Fake notification about social media account requiring verification",
+    "severity": 0.75,
+    "indicators": [
+      "Claims account will be deleted",
+      "Verification link provided",
+      "Mimics social platform branding",
+      "Unusual sender domain"
+    ],
+    "examples": [
+      "Your Facebook account will be disabled. Verify to keep your account.",
+      "Instagram security: Confirm your account or lose access permanently."
+    ]
+  }
+]
