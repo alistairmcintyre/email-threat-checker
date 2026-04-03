@@ -58,7 +58,7 @@ services:
 
   api:
     build:
-      context: ./api
+      context: api
       dockerfile: Dockerfile
     container_name: email-security-api
     ports:
@@ -82,7 +82,7 @@ services:
 
   seed:
     build:
-      context: ./api
+      context: api
       dockerfile: Dockerfile
     container_name: email-security-seed
     environment:
