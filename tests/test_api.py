@@ -11,6 +11,9 @@ import sys
 from pathlib import Path
 
 import httpx
+import pytest
+
+pytestmark = pytest.mark.integration
 
 API_URL = "http://localhost:8000"
 TEST_EMAILS_DIR = Path(__file__).parent / "test_emails"

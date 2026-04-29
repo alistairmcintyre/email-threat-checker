@@ -358,6 +358,10 @@ Respond in JSON format:
                         "prompt": prompt,
                         "stream": False,
                         "format": "json",
+                        "options": {
+                            "temperature": settings.llm_temperature,
+                            "seed": settings.llm_seed,
+                        },
                     },
                 )
                 response.raise_for_status()

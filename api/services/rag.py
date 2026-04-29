@@ -1,8 +1,14 @@
+import hashlib
+
 from qdrant_client import QdrantClient, models
 from qdrant_client.http.exceptions import UnexpectedResponse
 
 from config import settings
 from models import ThreatPattern, ThreatType, SimilarThreat
+
+
+def _stable_point_id(pattern_id: str) -> int:
+    return int(hashlib.sha1(pattern_id.encode()).hexdigest()[:16], 16)
 
 
 class RAGService:
@@ -37,7 +43,7 @@ class RAGService:
             collection_name=self.collection_name,
             points=[
                 models.PointStruct(
-                    id=hash(pattern.id) % (2**63),
+                    id=_stable_point_id(pattern.id),
                     vector=embedding,
                     payload={
                         "id": pattern.id,

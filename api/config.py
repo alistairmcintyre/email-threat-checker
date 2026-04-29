@@ -16,6 +16,9 @@ class Settings(BaseSettings):
     quarantine_threshold: float = 0.8
     suspicious_threshold: float = 0.5
 
+    llm_temperature: float = 0.0
+    llm_seed: int = 42
+
     class Config:
         env_file = ".env"
 

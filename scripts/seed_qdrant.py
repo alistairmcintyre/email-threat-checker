@@ -6,6 +6,7 @@ This script reads threat patterns from JSON files and creates embeddings
 using Ollama's nomic-embed-text model, then stores them in Qdrant.
 """
 
+import hashlib
 import json
 import os
 import sys
@@ -115,7 +116,7 @@ def seed_patterns(client: QdrantClient, patterns: list[dict]) -> int:
 
         points.append(
             models.PointStruct(
-                id=hash(pattern["id"]) % (2**63),
+                id=int(hashlib.sha1(pattern["id"].encode()).hexdigest()[:16], 16),
                 vector=embedding,
                 payload={
                     "id": pattern["id"],
