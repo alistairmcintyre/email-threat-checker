@@ -4,12 +4,25 @@ Local, open-source email threat detection system using RAG (Retrieval Augmented 
 
 ## Architecture
 
-```
-┌─────────────┬─────────────┬─────────────┐
-│   Ollama    │   Qdrant    │  FastAPI    │
-│  (LLM +     │  (Vector    │  (Email     │
-│  Embeddings)│   Store)    │   API)      │
-└─────────────┴─────────────┴─────────────┘
+```mermaid
+flowchart LR
+    Email[/"Incoming email"/] --> API["FastAPI<br/>/analyze"]
+    API --> H["Heuristic checks<br/><sub>sender · subject · URLs<br/>attachments · SPF/DKIM/DMARC</sub>"]
+    API --> Embed["Embedding<br/><sub>nomic-embed-text</sub>"]
+    Embed --> Qdrant[("Qdrant<br/>threat vectors")]
+    Qdrant -- "similar threats<br/>(RAG context)" --> LLM["Ollama<br/><sub>llama3.2:3b</sub>"]
+    H -- "detected threats" --> LLM
+    LLM -- "extra threats<br/>+ explanation" --> Score["Confidence<br/>+ verdict"]
+    H --> Score
+    Qdrant --> Score
+    Score --> Verdict{{"safe · suspicious · quarantine"}}
+
+    classDef store fill:#fff3e0,stroke:#fb8c00,color:#222
+    classDef model fill:#e3f2fd,stroke:#1e88e5,color:#222
+    classDef result fill:#e8f5e9,stroke:#43a047,color:#222
+    class Qdrant store
+    class LLM,Embed model
+    class Verdict result
 ```
 
 ### How the Components Work Together
